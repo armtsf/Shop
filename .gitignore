@@ -1,3 +1,4 @@
+
 # Compiled class file
 *.class
 
@@ -18,4 +19,7 @@
 *.zip
 *.tar.gz
 *.rar
+
 *.iml
+*.DS_STORE
+.idea/
