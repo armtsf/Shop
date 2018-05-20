@@ -38,6 +38,7 @@ public class UI {
             System.out.println();
         }
         System.out.println();
+        shop.finalizePurchase();
     }
 
     public void showFinalCart() {
