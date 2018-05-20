@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -37,6 +38,13 @@ public class Product {
 
     //DATABASE
     public static List<Product> getProducts() {
-        return null;
+        Product a = new Product("monitor", 20, 1);
+        Product b = new Product("TV", 50, 2);
+        Product c = new Product("Laptop", 500, 3);
+        List<Product> l = new ArrayList<>();
+        l.add(a);
+        l.add(b);
+        l.add(c);
+        return l;
     }
 }
