@@ -28,7 +28,7 @@ public class Shop {
         return cart;
     }
 
-    public Product findProduct(int id) {
+    public Product findProduct(int id) throws NoSuchElementException {
         for (Product product : products) {
             if (product.getId() == id)
                 return product;
@@ -36,7 +36,7 @@ public class Shop {
         throw new NoSuchElementException();
     }
 
-    public void buy(int id, int count) {
+    public void buy(int id, int count) throws NoSuchElementException {
         Product newProduct = findProduct(id);
         OrderedItem newItem = new OrderedItem(count, newProduct);
         cart.addToCart(newItem);

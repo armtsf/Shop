@@ -34,7 +34,12 @@ public class UI {
                 break;
             System.out.println("Enter number of products:");
             int count = in.nextInt();
-            shop.buy(id, count);
+            try {
+                shop.buy(id, count);
+            } catch (Exception e) {
+                System.out.println("Invalid id.");
+                continue;
+            }
             System.out.println();
         }
         System.out.println();
