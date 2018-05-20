@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,14 +40,29 @@ public class Product {
     }
 
     //DATABASE
-    public static List<Product> getProducts() {
-        Product a = new Product("monitor", 20, 1);
-        Product b = new Product("TV", 50, 2);
-        Product c = new Product("Laptop", 500, 3);
-        List<Product> l = new ArrayList<>();
-        l.add(a);
-        l.add(b);
-        l.add(c);
-        return l;
+    public static List<Product> getProducts(Connection conn) {
+//        Product a = new Product("monitor", 20, 1);
+//        Product b = new Product("TV", 50, 2);
+//        Product c = new Product("Laptop", 500, 3);
+//        List<Product> l = new ArrayList<>();
+//        l.add(a);
+//        l.add(b);
+//        l.add(c);
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery( "SELECT * FROM PRODUCT;" );
+            List<Product> l = new ArrayList<>();
+
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                double price = res.getDouble("price");
+                Product product = new Product(name, price, id);
+                l.add(product);
+            }
+            return l;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
